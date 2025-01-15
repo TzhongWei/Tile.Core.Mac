@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{F549A837-D439-4FBC-8EAC-2623F9CB2EA3}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Grasshopper/BakeHat.cs">
+    <Files>
+      <File FileName="Grasshopper/BakeHat.cs" Line="16" Column="53" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Tile.Core.Mac" expanded="True">
+            <Node name="Tile.Core.Mac" expanded="True">
+              <Node name="Grasshopper" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
+              </Node>
+              <Node name="Resources" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Tile.Core.Mac PreferredExecutionTarget="net48" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
