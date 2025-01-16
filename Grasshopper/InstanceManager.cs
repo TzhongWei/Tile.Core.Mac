@@ -12,9 +12,11 @@ namespace Tile.Core.Grasshopper
 {
     public class InstanceManager : GH_Component
     {
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
         public override Guid ComponentGuid => new Guid("{1E8AA468-DE1A-4268-B354-4C4587C7DAC1}");
-        public InstanceManager():base("HatTileManager", "Manager", "This component can list all hat tile defined in rhino environment. " +
-            "And it can also be used to delete the tiles", "Einstein", "Einstein") { }
+        public InstanceManager() : base("HatTileManager", "Manager", "This component can list all hat tile defined in rhino environment. " +
+            "And it can also be used to delete the tiles", "Einstein", "Einstein")
+        { }
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("RemoveTiles", "RTiles", "Input the tiles' name which will be removed in both rhino and this manager database", GH_ParamAccess.list);
@@ -43,7 +45,7 @@ namespace Tile.Core.Grasshopper
         }
         public void FunctionToRunOnClick()
         {
-            if(RemoveList.Count > 0)
+            if (RemoveList.Count > 0)
             {
                 var DoList = RemoveList.Where(x =>
                 HatTileDoc.BlockInstances.Contains(x)

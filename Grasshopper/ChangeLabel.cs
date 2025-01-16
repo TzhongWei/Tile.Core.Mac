@@ -14,7 +14,8 @@ namespace Tile.Core.Grasshopper
 {
     public class ChangeLabel : GH_Component
     {
-        public ChangeLabel():base("ChangeLabel", "ChLabel", "this component change the label of the tile component", "Einstein", "Einstein") 
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
+        public ChangeLabel() : base("ChangeLabel", "ChLabel", "this component change the label of the tile component", "Einstein", "Einstein")
         { }
         public override Guid ComponentGuid => new Guid("66E97349-D335-4BCF-9658-3B2F0FC1BC61");
         protected override Bitmap Icon => IconLoader.Change;

@@ -16,8 +16,9 @@ namespace Tile.Core.Grasshopper
 {
     public class DisplayTile : GH_Component
     {
-        public DisplayTile():base("DisplayEinsteinTile", "DisEin",
-            "Display the einstein block from the block definiton", 
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
+        public DisplayTile() : base("DisplayEinsteinTile", "DisEin",
+            "Display the einstein block from the block definiton",
             "Einstein", "Einstein")
         { }
         public override Guid ComponentGuid => new Guid("FB10CCF6-BEB5-4673-9609-7C90EBAD9D24");
@@ -46,16 +47,16 @@ namespace Tile.Core.Grasshopper
             DA.GetData("TileName", ref Name);
             DA.GetData("Plane", ref PL);
             var TS = Transform.PlaneToPlane(Rhino.Geometry.Plane.WorldXY, PL);
-            BlockInstance Tile = BlockInstance.Unset; 
+            BlockInstance Tile = BlockInstance.Unset;
 
-            Tile = (BlockInstance) Name;
-                
+            Tile = (BlockInstance)Name;
+
             if (Tile == null) throw new Exception($"The block {Name} isn't defined in this block instances.");
             var TileCopy = (BlockInstance)Tile.DuplicateGeometry();
             TileCopy.Transform(TS);
 
-            var Colours = TileCopy.tilePatterns.ColourFromObject ? 
-                TileCopy.tilePatterns.PatternAtts.Select(x => x.ObjectColor) : 
+            var Colours = TileCopy.tilePatterns.ColourFromObject ?
+                TileCopy.tilePatterns.PatternAtts.Select(x => x.ObjectColor) :
                 TileCopy.tilePatterns.PatternAtts.Select(x => RhinoDoc.ActiveDoc.Layers.
                 FindIndex(x.LayerIndex).Color);
 
