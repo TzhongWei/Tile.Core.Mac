@@ -37,6 +37,11 @@ namespace Tile.Core.Grasshopper
             DA.GetData("Length", ref Length);
             DA.GetData("Rescale", ref Rescale);
 
+            if (Description.Contains("GENERATEDES"))
+            {
+                Description = Description.Split('_')[0] + $"The a straight line {Length} unit(s) after this action";
+            }
+
             var FAC = new FAction(Name, Description, Length, Rescale);
             DA.SetData("FAction", FAC);
         }

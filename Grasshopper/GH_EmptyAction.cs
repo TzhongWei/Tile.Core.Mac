@@ -35,6 +35,12 @@ namespace Tile.Core.Grasshopper
 
             DA.GetData("TokenName", ref Name);
             DA.GetData("Description", ref Description);
+
+            if (Description.Contains("GENERATEDES"))
+            {
+                Description = Description.Split('_')[0] + $"No Action";
+            }
+
             DA.SetData("EmptyAction", new EmptyAction(Name, Description));
         }
     }

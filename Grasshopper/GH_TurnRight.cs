@@ -34,6 +34,11 @@ namespace Tile.Core.Grasshopper
             DA.GetData("Description", ref Description);
             DA.GetData("Degree", ref Degree);
 
+            if (Description.Contains("GENERATEDES"))
+            {
+                Description = Description.Split('_')[0] + $"The drawing turn right {Degree} degree after this action";
+            }
+
             var Right = new RotateActionRight(Name, Description, Degree);
             DA.SetData("TurnRightAction", Right);
 
