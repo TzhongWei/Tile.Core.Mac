@@ -1,17 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "8Lv4jxkiWN4=",
+  "dgSpecHash": "/rGkGDHI8fg9kujB+WNpJv0YBzi+yNL2EqdaZupzHwetOh4O3aGm8RSQv/JLpUqnshaaGUeSNnWG06SHh3Pvow==",
   "success": true,
-  "projectFilePath": "/Volumes/File/GAS/WorkShop/SeriousGaming&DigitalFabrication/01/Hat/Tile.Core.Mac/Tile.Core.Mac.csproj",
+  "projectFilePath": "D:\\研究所\\MonoTiles\\Tile.Coe.VScode\\Tile.Core.Mac\\Tile.Core.Mac\\Tile.Core.Mac.csproj",
   "expectedPackageFiles": [
-    "/Users/tsungweicheng/.nuget/packages/grasshopper/8.10.24226.13001/grasshopper.8.10.24226.13001.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/microsoft.netframework.referenceassemblies.net48/1.0.3/microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/rhinocommon/8.10.24226.13001/rhinocommon.8.10.24226.13001.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/system.drawing.common/9.0.0/system.drawing.common.9.0.0.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/microsoft.windowsdesktop.app.ref/7.0.20/microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
-    "/Users/tsungweicheng/.nuget/packages/microsoft.windowsdesktop.app.ref/7.0.20/microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512"
+    "C:\\Users\\Username\\.nuget\\packages\\grasshopper\\8.10.24226.13001\\grasshopper.8.10.24226.13001.nupkg.sha512",
+    "C:\\Users\\Username\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512",
+    "C:\\Users\\Username\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Username\\.nuget\\packages\\rhinocommon\\8.10.24226.13001\\rhinocommon.8.10.24226.13001.nupkg.sha512",
+    "C:\\Users\\Username\\.nuget\\packages\\system.drawing.common\\9.0.0\\system.drawing.common.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }
