@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Tile.LSystem;
@@ -43,5 +44,6 @@ namespace Tile.Core.Grasshopper
 
             DA.SetData("Rotate", new TranslationAction(Name, Description, Vc, sketch));
         }
+        protected override Bitmap Icon => IconLoader.Translation;
     }
 }

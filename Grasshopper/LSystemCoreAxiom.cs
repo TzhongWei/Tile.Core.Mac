@@ -6,20 +6,18 @@ using Tile.LSystem;
 
 namespace Tile.Core.Grasshopper
 {
-    public class LSystemCore : GH_Component
+    public class LSystemCoreAxiom : GH_Component
     {
-        public LSystemCore() : base("L-System Core", "LSystem", "this component can execute Lsystem rules", "Einstein", "L-System") { }
-        protected override Bitmap Icon => IconLoader.L_System;
-        public override Guid ComponentGuid => new Guid("f013b920-3128-47a4-b6af-b35adaafd8de");
+        public LSystemCoreAxiom() : base("L-System Core Axiom", "LSAxiom", "this component can execute Lsystem rules by a rule axiom", "Einstein", "L-System") { }
+        protected override Bitmap Icon => IconLoader.L_System_2;
+        public override Guid ComponentGuid => new Guid("1f8731ed-927a-4b35-bc14-8a7a463ffec0");
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddBooleanParameter("Run", "R", "Run this component", GH_ParamAccess.item);
             pManager.AddTextParameter("L-System Rules", "L-Rules", "The rules for l-system", GH_ParamAccess.list);
             pManager.AddIntegerParameter("IterationCount", "T", "Iteration count of these production rules", GH_ParamAccess.item, 2);
-            pManager.AddTextParameter("Set Axiom", "A", "Set the axiom for this system", GH_ParamAccess.item);
-            pManager[3].Optional = true;
-
+            pManager.AddTextParameter("Axiom Rule", "AR", "Set the axiom for this system", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -37,13 +35,13 @@ namespace Tile.Core.Grasshopper
             DA.GetData("Run", ref RUN);
             DA.GetDataList("L-System Rules", Rules);
             DA.GetData("IterationCount", ref Iter);
-            DA.GetData("Set Axiom", ref Axiom);
+            DA.GetData("Axiom Rule", ref Axiom);
 
 
 
             if (RUN && LSystem != null)
             {
-                LSystem.Run(out _, Iter);
+                LSystem.Run(Axiom, out _, Iter);
                 JustRun = true;
             }
             else if (!RUN && !JustRun)
@@ -51,11 +49,6 @@ namespace Tile.Core.Grasshopper
                 LSystem = new RuleExecuter(Rules);
 
                 LSystem.SetRule();
-
-                if (Axiom == "")
-                    LSystem.ComputeStartNonTerminal();
-                else
-                    LSystem.SetAxiom(Axiom);
             }
             else
             {

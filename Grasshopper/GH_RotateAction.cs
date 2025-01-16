@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Tile.LSystem;
@@ -25,7 +26,7 @@ namespace Tile.Core.Grasshopper
         {
             pManager.AddGenericParameter("Rotate", "AB", "this is an action setting", GH_ParamAccess.item);
         }
-
+        protected override Bitmap Icon => IconLoader.Rotate_1;
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             string Name = "", Description = "";

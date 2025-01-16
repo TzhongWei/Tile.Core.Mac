@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper.Kernel;
 using Tile.LSystem;
 using Tile.LSystem.TokenAction;
@@ -43,5 +44,6 @@ namespace Tile.Core.Grasshopper
             DA.SetData("TurnRightAction", Right);
 
         }
+        protected override Bitmap Icon => IconLoader.TurnLeft;
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper.Kernel;
 using Tile.LSystem;
 using Tile.LSystem.TokenAction;
@@ -45,5 +46,6 @@ namespace Tile.Core.Grasshopper
             var FAC = new FAction(Name, Description, Length, Rescale);
             DA.SetData("FAction", FAC);
         }
+        protected override Bitmap Icon => IconLoader.FAction;
     }
 }

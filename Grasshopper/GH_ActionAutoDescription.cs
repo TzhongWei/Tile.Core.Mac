@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Tile.LSystem;
@@ -13,7 +14,7 @@ namespace Tile.Core.Grasshopper
         public AutoDescription() : base("AutoDescription", "AuDe",
         "This Component links can generate the default description for the actionbased automatically", "Einstein", "L-System")
         { }
-
+        protected override Bitmap Icon => IconLoader.AutoDescription;
         public override Guid ComponentGuid => new Guid("3db14976-ec2c-4473-a3be-5b9df1bbeff0");
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)

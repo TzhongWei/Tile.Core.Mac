@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Grasshopper.Kernel;
@@ -17,7 +18,7 @@ namespace Tile.Core.Grasshopper
         }
 
         public override Guid ComponentGuid => new Guid("59a17ea2-a5b9-4e7e-bbbf-8f3ad1699751");
-
+        protected override Bitmap Icon => IconLoader.NoAction;
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("TokenName", "T", "the token name for this action.", GH_ParamAccess.item, "X");

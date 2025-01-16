@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Tile.LSystem.Util;
 using System.Linq;
 using System.Windows.Forms.VisualStyles;
+using System.Linq.Expressions;
 
 
 namespace Tile.LSystem
@@ -48,7 +49,7 @@ namespace Tile.LSystem
         }
         public bool SetAxiom(string Axiom)
         {
-            if (this._terminals.Contains(Axiom))
+            if (this._tokens.Contains(Axiom))
             {
                 this._start = Axiom;
                 return true;
@@ -226,6 +227,82 @@ namespace Tile.LSystem
 
             return true;
         }
+        /// <summary>
+        /// If your Axiom is a rule that isn't defined in the production rule
+        /// </summary>
+        /// <param name="AxiomRule"></param>
+        /// <param name="Language"></param>
+        /// <param name="IterationCount"></param>
+        /// <returns></returns>
+        public bool Run(string AxiomRule, out string Language, int IterationCount = 1)
+        {
+            if (AxiomRule.Contains("="))
+            {
+                Language = "NULL";
+                return false;
+            }
+            var Result = true;
+
+            var Seed = 0;
+            this.IterationCount = IterationCount;
+            if (this._start is null)
+                this.ComputeStartNonTerminal();
+
+            Language = "";
+
+            var ResultBags = new List<string>(AxiomRule.Split(' ').Select(x => Tools.CleanSequence(x)));
+            foreach (var AxiomToken in ResultBags)
+            {
+                if (!this._tokens.Contains(AxiomToken))
+                    throw new Exception($"{AxiomToken} is defined in the production rules");
+            }
+
+            this.iterationCount = IterationCount;
+
+            while (iterationCount > 0)
+            {
+                var TempBags = new List<string>();
+
+                for (int i = 0; i < ResultBags.Count; i++)
+                {
+                    var Token = ResultBags[i];
+                    if (this._nonterminals.Contains(Token))
+                    {
+                        var SubSelectedRule = SelectedARule(Token);
+                        TempBags.AddRange(SubSelectedRule.Body);
+                    }
+                    else
+                        TempBags.Add(Token);
+                }
+                ResultBags = TempBags;
+                iterationCount--;
+            }
+
+            if (ResultBags.Count == 0)
+                return false;
+
+            Language = string.Join(" ", ResultBags);
+            TokenResults = ResultBags;
+
+            cmd += $"\n Finish running. \n iteration = {IterationCount}\n Rules = {string.Join("\n", ProductionRules.Select(x => x.ToString()))} \n Language = {Language} ";
+
+            ProductionRule SelectedARule(string _Head)
+            {
+                var _rules = ProductionRules.Where(x => x.Head == _Head);
+                if (_rules == null)
+                    return null;
+                if (_rules.ToList().Count == 1) return _rules.FirstOrDefault();
+                else
+                {
+                    var Rand = new Random(Seed);
+                    Seed++;
+                    return _rules.ToList()[Rand.Next(_rules.ToList().Count)];
+                }
+            }
+
+            return Result;
+        }
+
         public override string ToString()
         {
             return cmd;

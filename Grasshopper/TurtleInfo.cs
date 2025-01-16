@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
@@ -49,5 +50,6 @@ namespace Tile.Core.Grasshopper
             DA.SetDataTree(2, TADatatree);
             DA.SetData("cmd", Turtle.cmd);
         }
+        protected override Bitmap Icon => IconLoader.TurtleInfo;
     }
 }

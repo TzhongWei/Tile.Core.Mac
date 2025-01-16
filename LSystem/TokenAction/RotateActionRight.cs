@@ -12,20 +12,21 @@ namespace Tile.LSystem.TokenAction
         public RotateActionRight(string Name, string Description, double Degree) : base(Name, Description)
         {
             this.Degree = Degree;
+            this.ActionTransform = Transform.Rotation(Degree / 180 * Math.PI, Point3d.Origin);
         }
         public RotateActionRight() : base("+", "The drawing turn right after this action")
         {
             Degree = 60;
-            this.ActionTransform = Transform.Rotation(Degree / 360 * Math.PI, Point3d.Origin);
+            this.ActionTransform = Transform.Rotation(Degree / 180 * Math.PI, Point3d.Origin);
         }
         public RotateActionRight(double Degree) : this()
         {
             this.Degree = Degree;
-            this.ActionTransform = Transform.Rotation(Degree / 360 * Math.PI, Point3d.Origin);
+            this.ActionTransform = Transform.Rotation(Degree / 180 * Math.PI, Point3d.Origin);
         }
         public override bool Execute(TokenPointer _pointer)
         {
-            _pointer.NextAction(Transform.Rotation(Degree / 360 * Math.PI, Point3d.Origin), $"Turn right {Degree} Degree");
+            _pointer.NextAction(Transform.Rotation(Degree / 180 * Math.PI, Point3d.Origin), $"Turn right {Degree} Degree");
             return false;
         }
     }

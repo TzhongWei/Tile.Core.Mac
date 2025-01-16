@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Grasshopper.Kernel;
 using Tile.LSystem;
 
@@ -8,6 +9,7 @@ namespace Tile.Core.Grasshopper
     public class LSystemInfo : GH_Component
     {
         public override GH_Exposure Exposure => GH_Exposure.secondary;
+        protected override Bitmap Icon => IconLoader.L_SystemInfo;
         public LSystemInfo() : base("L-System Information", "LSysInfo", "this component gets information from L-System Core"
         , "Einstein", "L-System")
         { }

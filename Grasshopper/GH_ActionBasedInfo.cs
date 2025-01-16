@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Grasshopper.Kernel;
@@ -13,7 +14,7 @@ namespace Tile.Core.Grasshopper
     {
         public override GH_Exposure Exposure => GH_Exposure.secondary;
         public GH_ActionBasedInfo() : base("ActionBased Information", "ABInfo", "The information of the input action", "Einstein", "L-System") { }
-
+        protected override Bitmap Icon => IconLoader.ActionInfo;
         public override Guid ComponentGuid => new Guid("ca92e160-a135-4497-9000-d97ce5e809e9");
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
