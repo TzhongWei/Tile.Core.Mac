@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Description of Tile.Core.Mac")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+31a1044e2fd6f632539b10a216b0dc625009fcdf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tile.Core.Mac")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tile.Core.Mac")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

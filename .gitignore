@@ -1,0 +1,51 @@
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore Grasshopper Assembly files
+*.gha
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore Visual Studio-specific files
+.vscode/
+*.csproj.user
+*.sln.ide
+*.vcxproj.filters
+
+# Ignore compiled files
+*.dll
+*.exe
+*.pdb
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.cache
+*.DS_Store
+*.Thumbs.db
+
+# Ignore Rider/JetBrains IDE specific files
+.idea/
+*.iml
+
+# Ignore package-related files
+*.nupkg
+*.lock.json
+*.npm
+
+# Ignore NuGet packages
+packages/
+*.nuget
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore temporary or working files
+*.bak
+*.swp
+*.orig
