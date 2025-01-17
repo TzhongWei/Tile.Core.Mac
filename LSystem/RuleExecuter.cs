@@ -164,6 +164,8 @@ namespace Tile.LSystem
             }
             return this._tokens;
         }
+        private string _OutputLanguage = "";
+        public string OutputLanguage{get => _OutputLanguage;}
         /// <summary>
         /// Run the L-system program
         /// </summary>
@@ -176,7 +178,7 @@ namespace Tile.LSystem
             this.IterationCount = IterationCount;
             if (this._start is null)
                 this.ComputeStartNonTerminal();
-
+            _OutputLanguage = "";
             Language = "";
 
             ProductionRule SelectedRule = SelectedARule(this._start);
@@ -210,7 +212,7 @@ namespace Tile.LSystem
             TokenResults = ResultBags;
 
             cmd += $"\n Finish running. \n iteration = {IterationCount}\n Rules = {string.Join("\n", ProductionRules.Select(x => x.ToString()))} \n Language = {Language} ";
-
+            _OutputLanguage = Language;
             ProductionRule SelectedARule(string _Head)
             {
                 var _rules = ProductionRules.Where(x => x.Head == _Head);
@@ -247,7 +249,7 @@ namespace Tile.LSystem
             this.IterationCount = IterationCount;
             if (this._start is null)
                 this.ComputeStartNonTerminal();
-
+            _OutputLanguage = "";
             Language = "";
 
             var ResultBags = new List<string>(AxiomRule.Split(' ').Select(x => Tools.CleanSequence(x)));
@@ -285,7 +287,7 @@ namespace Tile.LSystem
             TokenResults = ResultBags;
 
             cmd += $"\n Finish running. \n iteration = {IterationCount}\n Rules = {string.Join("\n", ProductionRules.Select(x => x.ToString()))} \n Language = {Language} ";
-
+            _OutputLanguage = Language;
             ProductionRule SelectedARule(string _Head)
             {
                 var _rules = ProductionRules.Where(x => x.Head == _Head);
