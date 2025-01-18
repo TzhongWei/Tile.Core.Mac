@@ -18,7 +18,8 @@ namespace Tile.Core.Grasshopper
         public StepTurtle() : base("StepTurtle", "SpTurtle",
         "Display a turtle which draws your L-system with transformation matrix information", "Einstein", "L-System")
         { }
-        public override GH_Exposure Exposure => GH_Exposure.secondary;
+        protected override Bitmap Icon => IconLoader.StepTurtle;
+        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         public override Guid ComponentGuid => new Guid("873383ee-844a-4ec4-b130-31998d0c55a1");
         protected override void RegisterInputParams(GH_InputParamManager pManager)
@@ -51,7 +52,7 @@ namespace Tile.Core.Grasshopper
             DA.GetData("L-System", ref lSystem);
             DA.GetData("Location", ref PL);
             DA.GetDataList("ActionBases", ABs);
-            
+
             Step--;
 
             if (lSystem == null)
@@ -65,8 +66,8 @@ namespace Tile.Core.Grasshopper
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, $"The input ActionBases '{AB}' is not a valid ActionBase object. Ensure all inputs implement ActionBase.");
                 return;
             }
-            
-            if(this._graphic == null || !this._lSystem.Equals(lSystem) || PL != _PL)
+
+            if (this._graphic == null || !this._lSystem.Equals(lSystem) || PL != _PL)
             {
                 this._graphic = new TurtleGraphic(lSystem, PL);
                 this._lSystem = lSystem.Clone();
@@ -86,53 +87,54 @@ namespace Tile.Core.Grasshopper
                     return;
                 }
             }
-            
+
             var Pointer = _graphic.GetPointer;
             var TS = Transform.PlaneToPlane(Plane.WorldXY, PL);
             string Token = "Non";
             var _turtle2d = new Turtle2D();
             _turtle2d.TurtleTransform(TS);
-            if(Step < 0) 
+            if (Step < 0)
             {
                 goto Conclusion;
             }
-            
+
             if (Step > _graphic.ExecuteTokens.Count)
             {
-                this.AddRuntimeMessage( GH_RuntimeMessageLevel.Warning, "The Step need to smaller than the number of token");
-                for(int i = 0; i < _graphic.ExecuteTokens.Count; i ++)
-            {
-                DisplayGeometry.AddRange(Pointer.Drawing[i], new GH_Path(i));
-            }
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The Step need to smaller than the number of token");
+                for (int i = 0; i < _graphic.ExecuteTokens.Count; i++)
+                {
+                    if (Pointer.Drawing.ContainsKey(i))
+                        DisplayGeometry.AddRange(Pointer.Drawing[i], new GH_Path(i));
+                }
                 goto Conclusion;
             }
-            
+
             Token = _graphic.ExecuteTokens[Step];
-            
-            for(int i = 0; i <= Step; i ++)
+
+            for (int i = 0; i <= Step; i++)
             {
-                if(Pointer.Drawing.ContainsKey(i))
+                if (Pointer.Drawing.ContainsKey(i))
                     DisplayGeometry.AddRange(Pointer.Drawing[i], new GH_Path(i));
-                
+
                 TS = Pointer.ActionHistory[i];
                 _turtle2d.TurtleTransform(TS);
             }
-            
 
-            Conclusion:
+
+        Conclusion:
             DA.SetData("Turtle", this._graphic);
             DA.SetData("ExecutedToken", Token);
             DA.SetDataTree(3, DisplayGeometry);
-            DA.SetData("Turtle2DInfo", _turtle2d);         
+            DA.SetData("Turtle2DInfo", _turtle2d);
         }
-         private BoundingBox _clip;
-         /// <summary>
-  /// Return a BoundingBox that contains all the geometry you are about to draw.
-  /// </summary>
-  public override BoundingBox ClippingBox
-  {
-    get { return _clip; }
-  }
+        private BoundingBox _clip;
+        /// <summary>
+        /// Return a BoundingBox that contains all the geometry you are about to draw.
+        /// </summary>
+        public override BoundingBox ClippingBox
+        {
+            get { return _clip; }
+        }
     }
 
 

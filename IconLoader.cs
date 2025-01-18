@@ -32,6 +32,8 @@ namespace Tile.Core
         public static Bitmap Turtle { get; private set; }
         public static Bitmap Turtle_2 { get; private set; }
         public static Bitmap TurtleInfo { get; private set; }
+        public static Bitmap StepTurtle { get; private set; }
+        public static Bitmap TurtleDisplay { get; private set; }
         static IconLoader()
         {
             Change = LoadIcon("Tile.Core.Mac.Resources.Change.png");
@@ -61,6 +63,8 @@ namespace Tile.Core
             Turtle = LoadIcon("Tile.Core.Mac.Resources.Turtle.png");
             Turtle_2 = LoadIcon("Tile.Core.Mac.Resources.Turtle_2.png");
             TurtleInfo = LoadIcon("Tile.Core.Mac.Resources.TurtleInfo.png");
+            StepTurtle = LoadIcon("Tile.Core.Mac.Resources.StepTurtle.png");
+            TurtleDisplay = LoadIcon("Tile.Core.Mac.Resources.TurtleDisplay.png");
         }
         private static Bitmap LoadIcon(string resourceName)
         {

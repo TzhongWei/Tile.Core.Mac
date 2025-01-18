@@ -12,8 +12,8 @@ namespace Tile.Core.Grasshopper
     public class TurtleDisplay : GH_Component
     {
         public TurtleDisplay() : base("TurtleDisplay", "TDis", "Display a turtle in L system, this component can be used to examine the execution process", "Einstein", "L-System") { }
-
-        public override GH_Exposure Exposure => GH_Exposure.quarternary;
+        protected override Bitmap Icon => IconLoader.TurtleDisplay;
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
 
         public override Guid ComponentGuid => new Guid("b1375a51-c542-443b-810e-7057f63f33da");
 
@@ -80,26 +80,29 @@ namespace Tile.Core.Grasshopper
             var TurtleColour = this.Attributes.Selected ? Color.Blue : Color.Red;
 
             foreach (var Curve in this.TurtleGeoms)
+            {
+                if (Curve == null) continue;
                 args.Display.DrawCurve(Curve, TurtleColour);
+            }
 
             DisplayFactor = DisplayFactor.Reverse().ToArray();
-            if(this.Attributes.Selected)
+            if (this.Attributes.Selected)
             {
-            for (int i = 0; i < DisplayFactor.Length; i++)
-            {
-                if (this.DisplayPath[i] == null) continue;
-                var Colour = this.InterpolateColor(Color.Red, Color.Yellow, DisplayFactor[i] / 10);
-                args.Display.DrawCurve(this.DisplayPath[i], Colour, (int)DisplayFactor[i]);
-            }
+                for (int i = 0; i < DisplayFactor.Length; i++)
+                {
+                    if (this.DisplayPath[i] == null) continue;
+                    var Colour = this.InterpolateColor(Color.Red, Color.Yellow, DisplayFactor[i] / 10);
+                    args.Display.DrawCurve(this.DisplayPath[i], Colour, (int)DisplayFactor[i]);
+                }
             }
             else
             {
                 for (int i = 0; i < DisplayFactor.Length; i++)
-            {
-                if (this.DisplayPath[i] == null) continue;
-                var Colour = this.InterpolateColor(Color.Red, Color.Yellow, DisplayFactor[i] / 10);
-                args.Display.DrawCurve(this.DisplayPath[i], Colour, (int)DisplayFactor[i]);
-            }
+                {
+                    if (this.DisplayPath[i] == null) continue;
+                    var Colour = this.InterpolateColor(Color.Red, Color.Yellow, DisplayFactor[i] / 10);
+                    args.Display.DrawCurve(this.DisplayPath[i], Colour, (int)DisplayFactor[i]);
+                }
             }
         }
     }
