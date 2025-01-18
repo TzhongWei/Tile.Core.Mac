@@ -309,5 +309,42 @@ namespace Tile.LSystem
         {
             return cmd;
         }
+        /// <summary>
+        /// Deep clone
+        /// </summary>
+        /// <returns></returns>
+        public RuleExecuter Clone()
+        {
+            var NewRule = new RuleExecuter(OriginalRule);
+            NewRule.SetRule();
+            NewRule._OutputLanguage = this._OutputLanguage;
+            NewRule._start = this._start;
+            NewRule.ComputeToken();
+            NewRule.cmd = this.cmd;
+            NewRule.TokenResults = this.TokenResults;
+            NewRule.IterationCount = this.IterationCount;
+            
+            return NewRule;
+        }
+        public override bool Equals(object obj)
+        {
+            if(obj is RuleExecuter)
+            {
+                var test = this.ProductionRules == (obj as RuleExecuter).ProductionRules;
+                var result = false;
+                for(int i=0; i<this.ProductionRules.Count;i++){
+                    result|= this.ProductionRules[i].Equals( (obj as RuleExecuter).ProductionRules[i]);
+                }
+
+                var test2 = this.OutputLanguage == (obj as RuleExecuter).OutputLanguage;
+                return result && this.OutputLanguage == (obj as RuleExecuter).OutputLanguage;
+            }
+            else
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return cmd.GetHashCode();
+        }
     }
 }

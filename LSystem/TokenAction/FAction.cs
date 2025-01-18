@@ -29,11 +29,15 @@ namespace Tile.LSystem.TokenAction
             Transform TS = Transform.Translation(0, InitialLength, 0);
             var Pt = new Point3d(0, 0, 0);
             Pt.Transform(_pointer.transform);
-            _pointer.NextAction(TS, $"Go forward {InitialLength}");
+            
             var Pt2 = new Point3d(0, 0, 0);
-            Pt2.Transform(_pointer.transform);
+            //Future position
+            Pt2.Transform(_pointer.transform * TS);
             var LN = new LineCurve(Pt, Pt2);
+            ///First Add drawing
             _pointer.AddDrawing(LN);
+            ///Second Move
+            _pointer.NextAction(TS, $"Go forward {InitialLength}");
             return true;
         }
         private bool Shorten = false;

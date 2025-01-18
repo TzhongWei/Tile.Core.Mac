@@ -23,12 +23,14 @@ namespace Tile.LSystem.TokenAction
 
             var Pt = new Point3d(0, 0, 0);
             Pt.Transform(_pointer.transform);
-            _pointer.NextAction(TS, $"Go forward {Motion.X}, {Motion.Y}, {Motion.Z}");
+
             var Pt2 = new Point3d(0, 0, 0);
-            Pt2.Transform(_pointer.transform);
+            Pt2.Transform(_pointer.transform * TS);
             var LN = new LineCurve(Pt, Pt2);
             if (IsSketch)
                 _pointer.AddDrawing(LN);
+
+            _pointer.NextAction(TS, $"Go forward {Motion.X}, {Motion.Y}, {Motion.Z}");
 
             return true;
         }
