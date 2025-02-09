@@ -21,14 +21,3 @@ D:/研究所/MonoTiles/Tile.Coe.VScode/Tile.Core.Mac/Tile.Core.Mac/obj/Debug/net
 D:/研究所/MonoTiles/Tile.Coe.VScode/Tile.Core.Mac/Tile.Core.Mac/obj/Debug/net48/Tile.Core.Mac.csproj.CopyComplete
 D:/研究所/MonoTiles/Tile.Coe.VScode/Tile.Core.Mac/Tile.Core.Mac/obj/Debug/net48/Tile.Core.Mac.gha
 D:/研究所/MonoTiles/Tile.Coe.VScode/Tile.Core.Mac/Tile.Core.Mac/obj/Debug/net48/Tile.Core.Mac.pdb
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\bin\Debug\net48\Tile.Core.Mac.gha
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\bin\Debug\net48\Tile.Core.Mac.pdb
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\bin\Debug\net48\Newtonsoft.Json.dll
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.csproj.AssemblyReference.cache
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.GeneratedMSBuildEditorConfig.editorconfig
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.AssemblyInfoInputs.cache
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.AssemblyInfo.cs
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.csproj.CoreCompileInputs.cache
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.csproj.CopyComplete
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.gha
-D:\研究所\MonoTiles\Tile.Coe.VScode\Tile.Core.Mac\Tile.Core.Mac\obj\Debug\net48\Tile.Core.Mac.pdb
