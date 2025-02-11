@@ -5,14 +5,16 @@ namespace Tile.Core.Patch
 {
     abstract public class PatchFunction
     {
-        public string Name { get; }
+        public abstract string Name { get; }
+        public abstract string XExpression { get; protected set; }
+        public abstract string YExpression { get; protected set; }
+        public abstract string ZExpression { get; protected set; }
         public abstract double XFunction(double u, double v);
         public abstract double YFunction(double u, double v);
         public abstract double ZFunction(double u, double v);
-        public PatchFunction(string name)
+        public override string ToString()
         {
-            this.Name = name;
+            return this.XExpression + "\n" + this.YExpression + "\n" + this.ZExpression;
         }
     }
-
 }
