@@ -6,11 +6,13 @@ using Rhino.Geometry;
 using Tile.Core.Patch;
 using Grasshopper.Kernel;
 using System;
+using System.Drawing;
 
 namespace Tile.Core.Grasshopper
 {
     public class ParametricFormSurface : GH_Component
     {
+        private Surface _previewSurface = null;
         public ParametricFormSurface() : base("ParametricFormSurface", "ParamSrf",
         "Using parametric form to define a surface", "Einstein", "Patch")
         { }
@@ -19,9 +21,11 @@ namespace Tile.Core.Grasshopper
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddIntervalParameter("uvDomain", "uv", "UVDomain", GH_ParamAccess.item);
+            pManager.AddIntervalParameter("uvDomain", "uv", "UVDomain", GH_ParamAccess.item, new Interval(-1, 1));
             pManager.AddGenericParameter("Expression", "E", "the expression r(u,v)", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Accuracy", "acc", "the accuracy of the functional patch", GH_ParamAccess.item, 100);
+            pManager.AddTransformParameter("Transformation", "X", "Transform the surface", GH_ParamAccess.item);
+            pManager[3].Optional = true;
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -39,16 +43,38 @@ namespace Tile.Core.Grasshopper
             int acc = 100;
             DA.GetData("Accuracy", ref acc);
             acc = acc <= 0 ? 100 : acc;
-
+            Transform X = Transform.Identity;
+            DA.GetData("Transformation", ref X);
             var Srf = new SurfacePatch(InV, Patch, acc);
-
+            
+            
             if (!Srf.Run())
             {
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Patch failed");
+                this._previewSurface = null;
                 return;
             }
-            DA.SetData(0, Srf.ResultSurface);
-            DA.SetData(1, Srf.ResultPts);
+            Srf.Transform(X, out this._previewSurface, out var Pts);
+            
+
+            DA.SetData(0, this._previewSurface);
+            DA.SetDataTree(1, Pts);
+        }
+
+        public override void DrawViewportMeshes(IGH_PreviewArgs args)
+        {
+            if(this._previewSurface == null) return;
+
+var Colour = this.Attributes.Selected ? Color.FromArgb(150, 0, 255, 0)  : Color.FromArgb(150, 255, 0, 0);  
+            args.Display.DrawSurface(_previewSurface, Colour, 1);
+            var Meshised = Mesh.CreateFromSurface(this._previewSurface);
+            if(Meshised != null) args.Display.DrawMeshShaded(Meshised, new Rhino.Display.DisplayMaterial(Colour));
+        }
+        public override void DrawViewportWires(IGH_PreviewArgs args)
+        {
+            if(this._previewSurface == null) return;
+var Colour = this.Attributes.Selected ? Color.FromArgb(150, 0, 255, 0)  : Color.FromArgb(150, 255, 0, 0);  
+            args.Display.DrawSurface(_previewSurface, Colour, 1);
         }
     }
 }

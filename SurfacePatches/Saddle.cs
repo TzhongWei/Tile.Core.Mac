@@ -9,10 +9,13 @@ namespace Tile.Core.Patch
         public double a;
         public double m;
 
-        public SaddleA(double a, double m)
+        public SaddleA(double a, double m):base()
         {
             this.a = a;
             this.m = m == 0 ? 1 : m;
+            this.ZExpression = $"1 - a / m * ((u-0.5)^2 - (v-0.5)^2), a = {a}, m = {m}";
+            this.XExpression = "u";
+            this.YExpression = "v";
         }
 
         public override string XExpression { get; protected set; }
@@ -21,19 +24,19 @@ namespace Tile.Core.Patch
 
         public override double XFunction(double u, double v)
         {
-            this.XExpression = "u";
+
             return u;
         }
 
         public override double YFunction(double u, double v)
         {
-            this.XExpression = "v";
+
             return v;
         }
 
         public override double ZFunction(double u, double v)
         {
-            this.ZExpression = $"1 - a / m * ((u-0.5)^2 - (v-0.5)^2), a = {a}, m = {m}";
+
             return 1 - a / m * (Math.Pow(u - 0.5, 2) - Math.Pow(v - 0.5, 2));
         }
     }
@@ -43,10 +46,13 @@ namespace Tile.Core.Patch
         public double a;
         public double m;
 
-        public SaddleB(double a, double m)
+        public SaddleB(double a, double m):base()
         {
             this.a = a;
             this.m = m == 0 ? 1 : m;
+             this.ZExpression = $"1 - a / m * ((u-0.5)^2 + (v-0.5)^2), a = {a}, m = {m}";
+            this.XExpression = "u";
+            this.YExpression = "v";
         }
 
         public override string XExpression { get; protected set; }
@@ -55,19 +61,16 @@ namespace Tile.Core.Patch
 
         public override double XFunction(double u, double v)
         {
-            this.XExpression = "u";
             return u;
         }
 
         public override double YFunction(double u, double v)
         {
-            this.XExpression = "v";
             return v;
         }
 
         public override double ZFunction(double u, double v)
         {
-            this.ZExpression = $"1 - a / m * ((u-0.5)^2 + (v-0.5)^2), a = {a}, m = {m}";
             return 1 - a / m * (Math.Pow(u - 0.5, 2) + Math.Pow(v - 0.5, 2));
         }
     }

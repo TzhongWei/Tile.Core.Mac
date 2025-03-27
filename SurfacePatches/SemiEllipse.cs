@@ -14,6 +14,9 @@ namespace Tile.Core.Patch
             this.a = a;
             this.b = b;
             this.m = m;
+            XExpression = $"a * (u / m) ^ (1/2) * cos(v), a = {a}, m = {m}";
+            YExpression = $"b * (u / m) ^ (1/2) * sin(v), b = {b}, m = {m}";
+            ZExpression = "u";
         }
 
         public override string XExpression { get; protected set; }
@@ -22,19 +25,19 @@ namespace Tile.Core.Patch
 
         public override double XFunction(double u, double v)
         {
-            XExpression = $"a * (u / m) ^ (1/2) * cos(v), a = {a}, m = {m}";
-            return a * Math.Pow(u / m, (1 / 2)) + Math.Cos(v);
+            
+            return a * Math.Pow(u / m, 0.5) * Math.Cos(v);
         }
 
         public override double YFunction(double u, double v)
         {
-            YExpression = $"a * (u / m) ^ (1/2) * sin(v), a = {a}, m = {m}";
-            return a * Math.Pow(u / m, (1 / 2)) + Math.Sin(v);
+            var Test = u / m;
+            return b * Math.Pow(Test, 0.5) * Math.Sin(v);
         }
 
         public override double ZFunction(double u, double v)
         {
-            ZExpression = "u";
+            
             return u;
         }
     }

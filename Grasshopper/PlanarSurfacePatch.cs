@@ -6,6 +6,7 @@ namespace Tile.Core.Grasshopper
 {
     public class PlanarSrfPatch : GH_Component
     {
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
         public PlanarSrfPatch() : base("PlanarSurfacePatch", "PSrf", "Create a rectangular planar surface patch", "Einstein", "Patch") { }
 
         public override Guid ComponentGuid => new Guid("a013b920-3128-47a4-b6af-b36adcafd8de");

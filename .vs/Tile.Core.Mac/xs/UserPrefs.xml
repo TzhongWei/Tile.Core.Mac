@@ -6,12 +6,12 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Tile.Core.Mac" expanded="True">
+          <Node name="Tile.Core.Mac">
             <Node name="Tile.Core.Mac" expanded="True">
-              <Node name="Grasshopper" expanded="True" />
-              <Node name="Properties" expanded="True">
-                <Node name="launchSettings.json" selected="True" />
+              <Node name="Grasshopper" expanded="True">
+                <Node name="BakeHat.cs" selected="True" />
               </Node>
+              <Node name="Properties" expanded="True" />
               <Node name="Resources" expanded="True" />
             </Node>
           </Node>
@@ -19,11 +19,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Tile.Core.Mac PreferredExecutionTarget="net48" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Tile.Core.Mac PreferredExecutionTarget="net48" />
 </Properties>

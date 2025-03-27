@@ -6,6 +6,7 @@ namespace Tile.Core.Grasshopper
 {
     public class SaddleAPatch : GH_Component
     {
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
         public SaddleAPatch() : base("SaddleAPatch", "Saddle", "Saddle surface in anticlastic function",
          "Einstein", "Patch")
         { }

@@ -9,6 +9,7 @@ namespace Tile.Core.Grasshopper
 {
     public class DevelopableSurfacePatch : GH_Component
     {
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
         public DevelopableSurfacePatch() : base("DevelopableSurfacePatch", "DSrf",
          "Deveopable surface example function", "Einstein", "Patch")
         { }

@@ -7,9 +7,7 @@ namespace Tile.Core.Patch
         private double vSize;
         public override string Name => "PlanarSrf";
         private double H;
-        private string _XExpression;
-        private string _YExpression;
-        private string _ZExpression;
+
         public override string XExpression { get => _XExpression; protected set { this._XExpression = value; } }
         public override string YExpression { get => _YExpression; protected set { this._YExpression = value; } }
         public override string ZExpression { get => _ZExpression; protected set { this._ZExpression = value; } }

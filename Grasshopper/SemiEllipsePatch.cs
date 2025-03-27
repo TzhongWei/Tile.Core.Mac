@@ -6,6 +6,8 @@ namespace Tile.Core.Grasshopper
 {
     public class SemiEllipsePatch : GH_Component
     {
+
+public override GH_Exposure Exposure => GH_Exposure.secondary;
         public SemiEllipsePatch() : base("SemiEllipsePatch", "SemiE", "Semi-Ellipse function", "Einstein", "Patch") { }
         public override Guid ComponentGuid => new Guid("c4c01241-efc0-4c1c-8e00-96052eaf3c08");
         protected override void RegisterInputParams(GH_InputParamManager pManager)
@@ -22,7 +24,7 @@ namespace Tile.Core.Grasshopper
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            double a = 1.0, b = 1.0, m = 1.0;
+            double a = 1.0, b = 1.0, m = 0.5;
             DA.GetData("Parameter_a", ref a);
             DA.GetData("Parameter_b", ref b);
             DA.GetData("Parameter_m", ref m);
